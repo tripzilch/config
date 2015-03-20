@@ -129,6 +129,14 @@ Restart Apache, for good measure
 
     sudo service apache2 restart
     
+TOT ZOVER    
+    
+---
+
+http://linuxg.net/how-to-install-owncloud-5-on-ubuntu-13-04-and-linux-mint-14/
+http://www.itzgeek.com/how-tos/linux/linux-mint-how-tos/install-owncloud-5-on-linux-mint-14.html
+
+first link says
 
 Now configure Apache:
 Enable SSL (for encrypted connection) using these commands:

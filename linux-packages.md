@@ -89,11 +89,57 @@ Then reboot etc.
 Owncloud
 ========
 
-    sudo apt-get install apache2 php5 php5-mysql php5-gd mysql-server
+First, add and sign the repositories:
 
-    sudo add-apt-repository ppa:noobslab/apps
+    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.10/ /' >> /etc/apt/sources.list.d/owncloud.list"
+    wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.10/Release.key
+    sudo apt-key add - < Release.key
+    
+Clean up the downloaded file:
+    
+    rm Release.key
+
+Update and install owncloud:
+
     sudo apt-get update
     sudo apt-get install owncloud
 
+Install MySQL, it will ask you for database root password:
 
+    sudo apt-get install php5-mysql php5-gd mysql-server
+    
+Login to the MySQL database:
 
+    mysql -u root -p
+
+Create a database called clouddb:
+
+    create database clouddb;
+
+Allow “clouddbuser” to access the “clouddb” database on localhost with your password:
+
+    grant all on clouddb.* to 'clouddbuser'@'localhost' identified by 'cloudjoggie';
+
+Set default_charset to 'UTF-8':
+
+    nano /etc/php5/apache2/php.ini
+    (ctrl-W, search for 'default_charset', uncomment UTF-8 line)
+    
+Restart Apache, for good measure
+
+    sudo service apache2 restart
+    
+
+Now configure Apache:
+Enable SSL (for encrypted connection) using these commands:
+
+    sudo apt-get install openssl
+    sudo a2enmod ssl
+    sudo a2enmod rewrite
+
+Now create self-signed certificate using this command:
+
+    sudo mkdir -p /etc/apache2/ssl
+    sudo openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/owncloud.pem -keyout /etc/apache2/ssl/owncloud.key
+    
+    

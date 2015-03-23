@@ -17,7 +17,7 @@ For DJO/SCN computers
         ipython ipython-notebook ipython-qtconsole \
         python-pip gimp inkscape chromium-browser gcc g++ build-essential \
         swftools audacity espeak ttf-mscorefonts-installer \
-        curl aria2 htop cowsay keepassx qtcreator sublime-text audacious 
+        curl aria2 htop xclip cowsay keepassx qtcreator sublime-text audacious
         
     sudo pip install youtube-dl
     
@@ -56,7 +56,7 @@ Personal
         ipython  ipython-qtconsole ipython-notebook python-tk spyder gimp inkscape \
         chromium-browser gcc g++ build-essential swftools audacity espeak \
         python-pip zsh ttf-mscorefonts-installer dropbox audacious powertop \
-        redshift curl htop cowsay keepassx qtcreator sublime-text aria2
+        redshift curl htop cowsay keepassx qtcreator sublime-text aria2 xclip
     
     sudo pip install youtube-dl
 

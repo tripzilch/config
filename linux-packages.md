@@ -169,3 +169,24 @@ also, als je een bestandje maakt in de home van een user (bijvoorbeeld voor root
 en die chmod je even 600
 
 Dan kan je daarna als root "mysql" intypen en ben je root user in de db
+
+    cat /etc/network/interfaces
+    # This file describes the network interfaces available on your system
+    # and how to activate them. For more information, see interfaces(5).
+
+    # The loopback network interface
+    auto lo
+    iface lo inet loopback
+
+    # The primary network interface
+    auto eth0
+    iface eth0 inet static
+     address 10.13.37.210
+     netmask 255.255.255.0
+     broadcast 10.13.37.255
+     network 10.13.37.0
+     gateway 10.13.37.1
+     dns-nameservers 10.13.1.250
+     dns-search scn.lan
+
+en daarna even `sudo service networking restart` of gewoon `sudo reboot`.

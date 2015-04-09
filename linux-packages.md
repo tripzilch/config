@@ -151,3 +151,21 @@ Now create self-signed certificate using this command:
     sudo openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/owncloud.pem -keyout /etc/apache2/ssl/owncloud.key
     
     
+### DINGEN VAN JEFF
+
+    CREATE USER '<GEBRUIKER>'@'localhost' IDENTIFIED BY '<WACHTWOORD>';
+    CREATE DATABASE <DATABASENAAM> CHARACTER SET utf8 COLLATE utf8_general_ci;
+    GRANT ALL PRIVILEGES ON <DATABASENAAM>.* TO '<GEBRUIKER>'@'localhost';
+    FLUSH PRIVILEGES;
+
+die utf8 is super belangrijk
+
+also, als je een bestandje maakt in de home van een user (bijvoorbeeld voor root in /root/) genaamd .my.cnf en je zet daar het volgende in:
+
+    [client]
+    user=root
+    password=64karakterlangsupersterkwachtwoord
+
+en die chmod je even 600
+
+Dan kan je daarna als root "mysql" intypen en ben je root user in de db

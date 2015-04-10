@@ -189,4 +189,4 @@ Dan kan je daarna als root "mysql" intypen en ben je root user in de db
      dns-nameservers 10.13.1.250
      dns-search scn.lan
 
-en daarna even `sudo service networking restart` of gewoon `sudo reboot`.
+en daarna even `sudo service network-manager restart` of gewoon `sudo reboot`.

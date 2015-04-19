@@ -11,13 +11,18 @@ For DJO/SCN computers
 ### packages en dingen installeren    
 
     sudo apt-get install \
-        zsh \
-        vim terminator vlc p7zip-full p7zip-rar \
-        imagemagick python-matplotlib python-numpy python-scipy python-pygame \
-        ipython ipython-notebook ipython-qtconsole \
-        python-pip gimp inkscape chromium-browser gcc g++ build-essential \
-        swftools audacity espeak ttf-mscorefonts-installer \
-        curl aria2 htop xclip cowsay keepassx qtcreator sublime-text audacious
+        vlc audacious \ # media players
+        gimp inkscape audacity \ # multimedia editors
+        firefox chromium-browser \ # internet browsers
+        owncloud-client keepassx \ # other apps
+        p7zip-full p7zip-rar ttf-mscorefonts-installer \ # cross-platform packages
+        imagemagick pandoc swftools \ # media and format conversion (needs: ffmpeg)
+        python-pip python-matplotlib python-numpy python-scipy python-pygame \ # python
+        ipython ipython-notebook ipython-qtconsole \ # ipython
+        vim sublime-text qtcreator \ # code editors / IDEs
+        gcc g++ build-essential \ # c++ build tools
+        zsh terminator \ # shell, terminal 
+        espeak curl aria2 htop xclip cowsay # useful command line tools
         
     sudo pip install youtube-dl
     
@@ -44,19 +49,14 @@ Optional packages
 
     sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
 
-### JACK/pulse troubleshooting:
+### JACK/pulse config + troubleshooting:
 
 https://wiki.archlinux.org/index.php/PulseAudio/Examples#PulseAudio_through_JACK
 
-Personal
---------
+Personal Extras
+---------------
 
-    sudo apt-get install vim terminator vlc p7zip-full p7zip-rar imagemagick \
-        python-matplotlib python-numpy python-scipy python-pygame python-opencv \
-        ipython  ipython-qtconsole ipython-notebook python-tk spyder gimp inkscape \
-        chromium-browser gcc g++ build-essential swftools audacity espeak \
-        python-pip zsh ttf-mscorefonts-installer dropbox audacious powertop \
-        redshift curl htop cowsay keepassx qtcreator sublime-text aria2 xclip
+    sudo apt-get install dropbox powertop redshift
     
     sudo pip install youtube-dl
 

@@ -22,7 +22,9 @@ Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die mi
 
     sudo apt-get update && sudo apt-get dist-upgrade -y
     
-### packages en dingen installeren    
+### 3. Packages en dingen installeren
+
+Allerlei gaaf en nuttig spul:
 
     sudo apt-get install \
         vlc audacious \ # media players

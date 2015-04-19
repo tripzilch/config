@@ -4,7 +4,21 @@ Packages
 For DJO/SCN computers
 ---------------------
 
-### eerst alles updaten
+### 1. Extra repository sources toevoegen
+
+Dit is de makkelijkste manier om software te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of gewoon ergens een binary vandaan plukt).
+
+Voor ffmpeg en nieuwere/betere versies van audiotools/libs.
+
+    sudo add-apt-repository ppa:mc3man/trusty-media
+    
+Nieuwste InkScape versie. Veel betere performance.
+
+    sudo add-apt-repository ppa:inkscape.dev/stable
+
+### 2. Dan alles updaten
+
+Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook zorgt dit ervoor dat de index van bovenstaande extra repository sources worden ingeladen zodat de extra packages daarin beschikbaar komen.
 
     sudo apt-get update && sudo apt-get dist-upgrade -y
     
@@ -16,7 +30,7 @@ For DJO/SCN computers
         firefox chromium-browser \ # internet browsers
         owncloud-client keepassx \ # other apps
         p7zip-full p7zip-rar ttf-mscorefonts-installer \ # cross-platform packages
-        imagemagick pandoc swftools \ # media and format conversion (needs: ffmpeg)
+        ffmpeg imagemagick pandoc swftools \ # media and format conversion
         python-pip python-matplotlib python-numpy python-scipy python-pygame \ # python
         ipython ipython-notebook ipython-qtconsole \ # ipython
         vim sublime-text qtcreator \ # code editors / IDEs

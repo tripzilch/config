@@ -15,6 +15,10 @@ Voor ffmpeg en nieuwere/betere versies van audiotools/libs.
 Nieuwste InkScape versie. Veel betere performance.
 
     sudo add-apt-repository ppa:inkscape.dev/stable
+    
+Nieuwste Audacity versie (2.10b heeft oa betere noise redux, user interface, FX threading).
+
+    sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 
 ### 2. Dan alles updaten
 

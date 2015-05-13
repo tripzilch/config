@@ -6,7 +6,7 @@ For DJO/SCN computers
 
 ### 1. Extra repository sources toevoegen
 
-Dit is de makkelijkste manier om software te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of gewoon ergens een binary vandaan plukt).
+Dit is de *makkelijkste* manier om **software** te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of gewoon ergens een binary vandaan plukt).
 
 Voor ffmpeg en nieuwere/betere versies van audiotools/libs.
 

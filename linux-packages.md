@@ -57,7 +57,17 @@ Allerlei gaaf en nuttig spul:
 
     sudo apt-get install -y zsh
     sudo chsh -s $(which zsh) <username>
-    
+   
+    sudo -i
+    NORMALUSER=gup
+    for i in vimrc zshrc; do
+      wget http://data.ion-box.org/trunk/files/$i -O /root/.$i
+      cp -v /root/.$i /etc/skel/
+      cp -v /root/.$i /home/$NORMALUSER/
+      chown $NORMALUSER:$NORMALUSER /home/$NORMALUSER/.$i
+    done
+
+Of, als de voorkeur uit gaat naar grmlr's zsh:
     cd
     wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc         
     

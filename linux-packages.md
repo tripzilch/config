@@ -20,6 +20,9 @@ Nieuwste Audacity versie (2.10b heeft oa betere noise redux, user interface, FX 
 
     sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 
+Nieuwste Darktable versie
+    sudo add-apt-repository ppa:pmjdebruijn/darktable-release
+
 ### 2. Dan alles updaten
 
 Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook zorgt dit ervoor dat de index van bovenstaande extra repository sources worden ingeladen zodat de extra packages daarin beschikbaar komen.
@@ -42,14 +45,18 @@ Allerlei gaaf en nuttig spul:
         vim sublime-text qtcreator \ # code editors / IDEs
         gcc g++ build-essential \ # c++ build tools
         zsh terminator \ # shell, terminal 
+        git git-core meld \ # git utilities & meld (graphical diff)
         espeak curl aria2 htop xclip cowsay # useful command line tools
         
     sudo pip install youtube-dl
+
+### Meld instellen als default git diff applicatie
+    git config --global diff.external meld
     
 ### zsh config (optional)
 
-    which zsh
-    chsh
+    sudo apt-get install -y zsh
+    sudo chsh -s $(which zsh) <username>
     
     cd
     wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc         

@@ -50,6 +50,23 @@ Allerlei gaaf en nuttig spul:
         
     sudo pip install youtube-dl
 
+without comments
+    
+    sudo apt-get install \
+        vlc audacious \
+        gimp inkscape audacity \
+        firefox chromium-browser \
+        owncloud-client keepassx \
+        p7zip-full p7zip-rar ttf-mscorefonts-installer \
+        ffmpeg imagemagick pandoc swftools \
+        python-pip python-matplotlib python-numpy python-scipy python-pygame \
+        ipython ipython-notebook ipython-qtconsole \
+        vim sublime-text qtcreator \
+        gcc g++ build-essential \
+        zsh terminator \
+        git git-core meld \
+        espeak curl aria2 htop xclip cowsay    
+
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld
     

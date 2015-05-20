@@ -66,6 +66,10 @@ without comments
         zsh terminator \
         git git-core meld \
         espeak curl aria2 htop xclip cowsay    
+        
+### uBlock Origin adblocker
+
+https://github.com/gorhill/uBlock/releases
 
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld

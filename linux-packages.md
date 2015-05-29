@@ -78,7 +78,15 @@ Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld
     
-### zsh config (optional)
+### zsh config
+
+#### DJO Easy Mode (TM)
+    
+    sudo chsh -s $(which zsh) <username>
+    cd
+    wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc         
+    
+#### SCN Elite Mode (TM)    
 
     sudo apt-get install -y zsh
     sudo chsh -s $(which zsh) <username>

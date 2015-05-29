@@ -51,21 +51,29 @@ Allerlei gaaf en nuttig spul:
     sudo pip install youtube-dl
 
         
-### uBlock Origin adblocker
+### Configure Browser 
 
-https://github.com/gorhill/uBlock/releases
+(uBlock Origin adblocker](https://github.com/gorhill/uBlock/releases)
+
+Zet de smooth scrolling uit in Firefox via about:config (zoek naar smoothscroll).
 
 ### Package Control voor SublimeText
 
 https://packagecontrol.io/installation
 
-Gebruik de "Simple" methode, code copypasten in de Sublime Console (ctrl-`)
+Gebruik de "Simple" methode, code copypasten in de Sublime Console (ctrl-`).
+
+Ga naar `Preferences > Settings - User` en voeg de volgende regel toe tussen de curly brackets:
+
+    "scroll_speed": 0.0
+    
+Vergeet niet te saven (ctrl-S).
 
 ### QtCreator
 
 http://www.qt.io/download-open-source/
 
-Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples.
+Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je moet de installer nog een executable flag geven (Properties menu, of `chmod +x ~/Downloads/qt-<TAB>` in command line). Je kan de stap om een account te maken gewoon overslaan (Next).
 
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld

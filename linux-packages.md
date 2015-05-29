@@ -34,25 +34,6 @@ Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die mi
 Allerlei gaaf en nuttig spul:
 
     sudo apt-get install \
-        vlc audacious \ # media players
-        gimp inkscape audacity \ # multimedia editors
-        firefox chromium-browser \ # internet browsers
-        owncloud-client keepassx \ # other apps
-        p7zip-full p7zip-rar ttf-mscorefonts-installer \ # cross-platform packages
-        ffmpeg imagemagick pandoc swftools \ # media and format conversion
-        python-pip python-matplotlib python-numpy python-scipy python-pygame \ # python
-        ipython ipython-notebook ipython-qtconsole \ # ipython
-        vim sublime-text qtcreator \ # code editors / IDEs
-        gcc g++ build-essential \ # c++ build tools
-        zsh terminator \ # shell, terminal 
-        git git-core meld \ # git utilities & meld (graphical diff)
-        espeak curl aria2 htop xclip cowsay # useful command line tools
-        
-    sudo pip install youtube-dl
-
-without comments
-    
-    sudo apt-get install \
         vlc audacious \
         gimp inkscape audacity \
         firefox chromium-browser \
@@ -61,15 +42,30 @@ without comments
         ffmpeg imagemagick pandoc swftools \
         python-pip python-matplotlib python-numpy python-scipy python-pygame \
         ipython ipython-notebook ipython-qtconsole \
-        vim sublime-text qtcreator \
+        vim sublime-text \
         gcc g++ build-essential \
         zsh terminator \
         git git-core meld \
         espeak curl aria2 htop xclip cowsay    
+
+    sudo pip install youtube-dl
+
         
 ### uBlock Origin adblocker
 
 https://github.com/gorhill/uBlock/releases
+
+### Package Control voor SublimeText
+
+https://packagecontrol.io/installation
+
+Gebruik de "Simple" methode, code copypasten in de Sublime Console (ctrl-`)
+
+### QtCreator
+
+http://www.qt.io/download-open-source/
+
+Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples.
 
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld

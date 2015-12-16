@@ -8,7 +8,7 @@ sudo add-apt-repository -y ppa:inkscape.dev/stable
 sudo add-apt-repository -y ppa:ubuntuhandbook1/audacity
 
 echo
-echo ======== UPDAETING EVERTHING EVERYWHERE FOREVER
+echo ======== UPDAETING EVERTHING EVERYWHERE FOREVER (not really forever)
 echo
 sudo apt-get update -y && sudo apt-get dist-upgrade -y
 
@@ -38,8 +38,8 @@ sudo pip install youtube-dl
 echo
 echo ======== MAKING ZSH ZE SHELL
 echo
-sudo chsh -s $(which zsh) <username>
-cd
+sudo chsh -s $(which zsh) jog
+cd ~
 wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
 echo

@@ -8,7 +8,7 @@ sudo add-apt-repository -y ppa:inkscape.dev/stable
 sudo add-apt-repository -y ppa:ubuntuhandbook1/audacity
 
 echo
-echo ======== UPDAETING EVERTHING EVERYWHERE FOREVER (not really forever)
+echo ======== UPDAETING EVERTHING EVERYWHERE FOREVER \(not really forever\)
 echo
 sudo apt-get update -y && sudo apt-get dist-upgrade -y
 

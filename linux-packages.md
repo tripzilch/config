@@ -122,11 +122,48 @@ JACK met nog meer extra nuttige en minder nuttige tools (zelfde regel met `--ins
 
     sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
 
-### JACK/pulse config + troubleshooting:
+Het is handig om even te checken of QjackCtl automatisch opstart als je computer is opgestart (menu > `System` > `Preferences` > `Startup Applications`).
 
-Check de ArchLinux Wiki (advies daarin is voor een hoop dingen nuttig ook voor andere Linuxen die niet Arch zijn).
+### JACK troubleshooting / info
 
-https://wiki.archlinux.org/index.php/PulseAudio/Examples#PulseAudio_through_JACK
+Meestal werkt JACK voor het grootste deel gewoon prima. Soms moet je even in het desbetreffende programma JACK selecteren als audio device.
+
+De `vlc-plugin-jack` package wordt VLC blij van.
+
+Wat wel vaak problematisch is, is om PulseAudio aan de praat te krijgen onder JACK. Het is handig om een beetje idee te hebben hoe dit in elkaar steekt. Voordat je JACK installeert werkt audio in default Ubuntu en Linux Mint installs als volgt:
+
+Het begint met [ALSA](https://en.wikipedia.org/wiki/Advanced_Linux_Sound_Architecture), dat is de driver voor je soundcard, diep in de Linux kernel. Zonder ALSA is er geen geluid. ALSA detecteert ook welke input en output devices er in je systeem zitten, dat lijstje kan je oa zien in `QjackCtl`, onder het knopje `Setup ...` en dan de `>` knopjes naast "Input Device" en "Output Device". Dit is nuttig om te checken want ALSA ziet bijvoorbeeld ook je HDMI-monitor als een output-device (zelfs als er geen speakers in je monitor zitten), en ik heb zelfs mijn Novation Launchkey MIDI keyboard er eens tussen zien staan (wat echt helemaal nergens op slaat maar goed). Je wil natuurlijk de geluidskaart selecteren waar je speakers op zijn aangesloten (gewoon uitproberen).
+
+Wat ALSA niet kan, is als meerdere programma's geluid willen spelen op hetzelfde output device. Dat geluid moet door elkaar gemixt worden tot een audiosignaal. Dat doet ALSA niet, en dat is waar PulseAudio om de hoek komt kijken. De verschillende programma's sturen hun audiosignaal naar PulseAudio, die mixt de boel samen, en geeft dat dan aan ALSA zodat je het uit je speakers hoort. Tot zover gaat het gewoon goed, geluid werkt meestal gelijk prima als je Ubuntu of Mint installeert.
+
+En dan installeer je JACK. JACK wil ook direct met ALSA praten, dus dan is er geen ruimte meer voor PulseAudio. En in principe heb je PulseAudio gewoon niet meer nodig want JACK kan alles, audio mixen, en meer. Helaas, willen om de een of andere reden webbrowsers (Firefox, Chromium) en hun plugins (Flash) hun geluid *per se* door PulseAudio spelen en anders niet. Stom!
+
+Om deze reden installeer je de package `pulseaudio-module-jack`. Hiermee wordt PulseAudio een module die *onder* JACK hangt (die weer onder ALSA hangt), de programma's die per se met PulseAudio willen praten kunnen dan met die module praten, die zie je soms staan als de "PulseAudio JACK Sink". JACK mixt dan alles wat via de PulseAudio JACK Sink binnenkomt samen met de rest van de audio, stuurt dat naar ALSA, en klaar.
+
+Dit is hoe het zou *moeten* werken. Alleen dit gaat niet altijd goed. En dan heb je geen geluid in YouTube, bijvoorbeeld. Wat ook wel gebeurt is als je laptop in hibernate/sleep mode is gegaan, dat bij het opnieuw aan gaan de verbinding tussen PulseAudio en JACK kwijtraakt of mis gaat.
+
+Hoe je dit optimaal moet fixen dat het gewoon werkt weet ik nog niet precies want om de zoveel tijd krijgen JACK en PulseAudio bij mij ook weer ruzie. Een paar dingen die mogelijk een oplossing kunnen zijn:
+
+* Check de [ArchLinux Wiki](https://wiki.archlinux.org/index.php/PulseAudio/Examples#PulseAudio_through_JACK) (deze wiki is sowieso heel nuttig voor veel Linux systeem-dingen, en vaak ook relevant voor andere Linuxen die niet Arch zijn zoals Ubuntu of Mint).
+
+  Ik heb vooral succes gehad met "The new way" ipv "The new new way" (de tweede dus). Maar probeer vooral wat uit.
+
+* *Turning it off and on again.*
+
+  Je kan JACK uit en aan zetten mbv de Stop en Start knopjes in QjackCtl. Werkt vaak erg goed als PulseAudio in de war is geraakt omdat je laptop in hibernate/sleep is geweest.
+
+  Je kan PulseAudio ook uit en aan zetten, dan typ je in de terminal: `pulseaudio -k`. Hoeft geen `sudo` bij. This kills the PulseAudio daemon. En die start dan automatisch na een seconde of twee weer op en gaat dan op zoek naar JACK.
+
+  Wat misschien kan helpen is verschillende combinaties en volgordes proberen, eerst JACK uit, dan PulseAudio doodmaken, dan gauw JACK weer aan voordat PulseAudio terug is, of juist even wachten, of andersom, etcetera.
+
+  Soms moet je ook je hele browser eerst uit en aan zetten voordat het weer werkt. Soms is het voldoende om alleen de pagina met YouTube te reloaden.
+
+* Als alles verder faalt, is het natuurlijk ook een optie om JACK gewoon uit te zetten. In dat geval kan PulseAudio weer direct met ALSA praten en dat gaat meestal goed. Misschien moet je nog even `pulseaudio -k` doen nadat je JACK uit hebt gezet om zeg maar te refreshen, in mijn ervaring is dat echter niet nodig. Nu heb je als het goed is weer geluid in je browser. Als je dan Renoise wilt gebruiken of een ander programma dat beter werkt met JACK, zet je JACK eerst weer aan, en dan start je Renoise op (of je drukt op het `Reinitialize` knopje in Renoise audio preferences).
+
+  Als je JACK uit hebt staan, en je start Renoise, dan pakt Renoise ALSA direct. Wat dus betekent dat PulseAudio niet bij ALSA kan. Dus als je JACK uit hebt, en je hebt nog steeds geen geluid in je browser. Renoise afsluiten, nog een keer proberen. Misschien nog even je browser afsluiten, `pulseaudio -k`, paar seconden wachten, browser aan.
+
+  Als je voor deze laatste optie gaat, is het handig om even bij je Linux startmenu > `System` > `Preferences` > `Startup Applications` te kijken en QjackCtl uit te zetten (als die er tussen staat). Dan start QjackCtl niet op bij het opstarten en begin je gewoon met ALSA+PulseAudio zonder JACK, en kan je zelf JACK aanzetten wanneer je wilt (QjackCtl staat in het startmenu bij `Sound & Video`).
+
 
 Various optional packages
 -------------------------

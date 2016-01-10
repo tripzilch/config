@@ -11,11 +11,11 @@ Dit is de *makkelijkste* manier om **software** te kunnen installeren die niet i
 Voor ffmpeg en nieuwere/betere versies van audiotools/libs.
 
     sudo add-apt-repository ppa:mc3man/trusty-media
-    
+
 Nieuwste InkScape versie. Veel betere performance.
 
     sudo add-apt-repository ppa:inkscape.dev/stable
-    
+
 Nieuwste Audacity versie (2.10b heeft oa betere noise redux, user interface, FX threading).
 
     sudo add-apt-repository ppa:ubuntuhandbook1/audacity
@@ -28,7 +28,7 @@ Nieuwste Darktable versie
 Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook zorgt dit ervoor dat de index van bovenstaande extra repository sources worden ingeladen zodat de extra packages daarin beschikbaar komen.
 
     sudo apt-get update && sudo apt-get dist-upgrade -y
-    
+
 ### 3. Packages en dingen installeren
 
 Allerlei gaaf en nuttig spul:
@@ -46,12 +46,12 @@ Allerlei gaaf en nuttig spul:
         gcc g++ build-essential \
         zsh terminator \
         git git-core meld \
-        espeak curl aria2 htop xclip cowsay    
+        espeak curl aria2 htop xclip cowsay
 
     sudo pip install youtube-dl
 
-        
-### Configure Browser 
+
+### Configure Browser
 
 (uBlock Origin adblocker](https://github.com/gorhill/uBlock/releases)
 
@@ -66,7 +66,7 @@ Gebruik de "Simple" methode, code copypasten in de Sublime Console (ctrl-`).
 Ga naar `Preferences > Settings - User` en voeg de volgende regel toe tussen de curly brackets:
 
     "scroll_speed": 0.0
-    
+
 Vergeet niet te saven (ctrl-S).
 
 ### QtCreator
@@ -77,20 +77,20 @@ Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je
 
 ### Meld instellen als default git diff applicatie
     git config --global diff.external meld
-    
+
 ### zsh config
 
 #### DJO Easy Mode (TM)
-    
-    sudo chsh -s $(which zsh) <username>
+
+    sudo chsh -s $(which zsh) $USER
     cd
-    wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc         
-    
-#### SCN Elite Mode (TM)    
+    wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+
+#### SCN Elite Mode (TM)
 
     sudo apt-get install -y zsh
     sudo chsh -s $(which zsh) <username>
-   
+
     sudo -i
     NORMALUSER=gup
     for i in vimrc zshrc; do
@@ -103,32 +103,40 @@ Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je
 Of, als de voorkeur uit gaat naar grmlr's zsh:
 
     cd
-    wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc         
-    
+    wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
+
 Also, see [Kyentei's repo](https://github.com/kyentei/configs) for zshrc, jackd info, among other things.
-     
-### just ipython+pylab special:     
+
+### just ipython+pylab special:
 
     sudo apt-get install python-matplotlib python-numpy python-scipy python-pygame ipython ipython-notebook ipython-qtconsole python-pip
 
-Optional packages
------------------
+JACK
+----
 
-    sudo apt-get install blender 
-    
-    sudo apt-get install powertop gtk-redshift
+Basis JACK + nuttige tools:
+
+    sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack
+
+JACK met nog meer extra nuttige en minder nuttige tools (zelfde regel met `--install-suggests`):
 
     sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
 
 ### JACK/pulse config + troubleshooting:
 
+Check de ArchLinux Wiki (advies daarin is voor een hoop dingen nuttig ook voor andere Linuxen die niet Arch zijn).
+
 https://wiki.archlinux.org/index.php/PulseAudio/Examples#PulseAudio_through_JACK
 
-Personal Extras
----------------
+Various optional packages
+-------------------------
+
+    sudo apt-get install blender
+
+    sudo apt-get install powertop gtk-redshift
 
     sudo apt-get install dropbox powertop redshift
-    
+
     sudo pip install youtube-dl
 
     sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
@@ -165,9 +173,9 @@ First, add and sign the repositories:
     sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.10/ /' >> /etc/apt/sources.list.d/owncloud.list"
     wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.10/Release.key
     sudo apt-key add - < Release.key
-    
+
 Clean up the downloaded file:
-    
+
     rm Release.key
 
 Update and install owncloud:
@@ -178,7 +186,7 @@ Update and install owncloud:
 Install MySQL, it will ask you for database root password:
 
     sudo apt-get install php5-mysql php5-gd mysql-server
-    
+
 Login to the MySQL database:
 
     mysql -u root -p
@@ -195,13 +203,13 @@ Set default_charset to 'UTF-8':
 
     nano /etc/php5/apache2/php.ini
     (ctrl-W, search for 'default_charset', uncomment UTF-8 line)
-    
+
 Restart Apache, for good measure
 
     sudo service apache2 restart
-    
-TOT ZOVER    
-    
+
+TOT ZOVER
+
 ---
 
 http://linuxg.net/how-to-install-owncloud-5-on-ubuntu-13-04-and-linux-mint-14/
@@ -220,8 +228,8 @@ Now create self-signed certificate using this command:
 
     sudo mkdir -p /etc/apache2/ssl
     sudo openssl req -new -x509 -days 365 -nodes -out /etc/apache2/ssl/owncloud.pem -keyout /etc/apache2/ssl/owncloud.key
-    
-    
+
+
 ### DINGEN VAN JEFF
 
     CREATE USER '<GEBRUIKER>'@'localhost' IDENTIFIED BY '<WACHTWOORD>';

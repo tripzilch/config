@@ -118,10 +118,6 @@ Basis JACK + nuttige tools:
 
     sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack
 
-JACK met nog meer extra nuttige en minder nuttige tools (zelfde regel met `--install-suggests`):
-
-    sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
-
 Het is handig om even te checken of QjackCtl automatisch opstart als je computer is opgestart (menu > `System` > `Preferences` > `Startup Applications`).
 
 ### JACK troubleshooting / info

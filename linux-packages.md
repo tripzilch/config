@@ -21,6 +21,7 @@ Nieuwste Audacity versie (2.10b heeft oa betere noise redux, user interface, FX 
     sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 
 Nieuwste Darktable versie
+
     sudo add-apt-repository ppa:pmjdebruijn/darktable-release
 
 ### 2. Dan alles updaten

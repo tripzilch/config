@@ -1,18 +1,26 @@
-Packages
-========
+Linux config notities
+=====================
+
+Dit document bevat aantekeningen, spiekbriefjes en notities voor Linux op de desktop. Het is bedoeld voor Linux Mint, Ubuntu en andere distros die daar voldoende op lijken.
+
+Initieel bedoeld om een computer met frisse Linux install eenvoudig en snel te voorzien van nuttige software en configuratie, voor gebruik op [DJO](http://djog.nl). Bij [SCN](http://stichting-scn.nl/) gebruiken we een slimmere methode met een kant-en-klare image. Ondertussen bevat het ook algemenere aantekeningen en tips
 
 For DJO/SCN computers
 ---------------------
 
 ### 1. Extra repository sources toevoegen
 
-Dit is de *makkelijkste* manier om **software** te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of gewoon ergens een binary vandaan plukt).
+Dit is de makkelijkste manier om software te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of een binary ergens vandaan plukt).
 
-Voor ffmpeg en nieuwere/betere versies van audiotools/libs.
+Nadeel is wel weer dat je moet opletten of dit altijd nog wel nuttig is om te doen (heen-en-weer-getrek tussen ffmpeg en avconv is ook iedere maand anders).
+
+En ook of deze specifieke extra repos nog steeds de meest recente versie trekken en compileren en niet gestopt zijn.
+
+Voor nieuwste ffmpeg:
 
     sudo add-apt-repository ppa:mc3man/trusty-media
 
-Nieuwste InkScape versie. Veel betere performance.
+Voor nieuwste InkScape versie.
 
     sudo add-apt-repository ppa:inkscape.dev/stable
 

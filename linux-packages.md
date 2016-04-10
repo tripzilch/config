@@ -83,17 +83,17 @@ Add these to the Bookmark Toolbar. Consider installing [Bookmark Shortcut Keys A
 
   * FIXEDFIXER -- kills `position:fixed` floaters
 
-    javascript:Array.forEach(document.getElementsByTagName('*'),%20function%20FIX(e){%20if%20(getComputedStyle(e).position%20==%20'fixed')%20e.style.position='static';})
+        javascript:Array.forEach(document.getElementsByTagName('*'),%20function%20FIX(e){%20if%20(getComputedStyle(e).position%20==%20'fixed')%20e.style.position='static';})
 
   * NEXT ➔ -- guesses most probable link to "next page", and clicks it (good ol' Opera ...)
 
-    javascript:['a[rel=next]','a.next','a[class*=next]','a[title*=next]','.next>a','[class*=next]>a'].find(function(v){var%20e=document.querySelector(v);if(e){e.click();return%201}else%20return%200});
+        javascript:['a[rel=next]','a.next','a[class*=next]','a[title*=next]','.next>a','[class*=next]>a'].find(function(v){var%20e=document.querySelector(v);if(e){e.click();return%201}else%20return%200});
 
 Of course don't forget to delete the useless bundled bookmarks. In fact, why not open bookmarks manager on first start, ctrl-A and delete all. Then import your bookmarks from previous browser.
 
 #### Other Firefox config
 
-Disable smooth scrolling. about:config, ctrl-f smoothscroll, false. Or via preferences, advanced, general, smooth scrolling. Even on a very fast machine, it still adds unnecessary jank and ghosted blurs on most monitors, so give it a try.
+Disable smooth scrolling. `ctrl-L`, `about:config`, search "smoothscroll", set to `false`. Or via preferences, advanced, general, smooth scrolling. Even on a very fast machine, it still adds unnecessary jank and ghosted blurs on most monitors, so give it a try.
 
 Set DuckDuckGo as default search. Delete Amazon & such.
 
@@ -107,7 +107,7 @@ Preferences, privacy, "Keep cookies until I close Firefox" (aka "throw away on e
 
 Remove useless GUI elements from toolbar: Home button, Search box, Pocket, etc. My toolbar looks like:
 
-    ADDRESS/AWESOME BAR - BOOKMARKS TOOLBAR - NoScript/Ghostery/uBlock BUTTONS - DOWNLOADS - HAMBURGER MENU BUTTON
+    ADDRESS/AWESOME BAR - BOOKMARKS TOOLBAR - NoScript/Ghostery/uBlock BUTTONS - DOWNLOADS - MENU BUTTON
 
 The address bar shows BACK/FORWARD and STOP/RELOAD buttons when applicable. Click and hold BACK/FORWARD buttons to show drop-down of browsing history for that tab.
 
@@ -129,21 +129,21 @@ Vergeet niet te saven (ctrl-S).
 
 ### Tweak Desktop Environment / Window Manager
 
-Global **keyboard shortcuts!** In MATE, go to `System > Preferences > Keyboard Shortcuts`, but most DE will have this. Remember the "Windows-key" is called "Super" or sometimes "Mod4" on Linux. It's a great modifier for global keyboard shortcuts because not many applications use it. Here's some more ideas (but only bother if you'll actually use them).
+Global **keyboard shortcuts!** In MATE, go to `System > Preferences > Keyboard Shortcuts`, but most DE will have this. Remember the "Windows-key" is called `Super` or sometimes `Mod4` on Linux. It's a great modifier for global keyboard shortcuts because not many applications use it. Here's some more ideas (but only bother if you'll actually use them).
 
-Both Ctrl+Alt+T and Super+T should open a terminal in some way (at least one of them probably already does, by default).
+Both `Ctrl+Alt+T` and `Super+T` should open a terminal in some way (at least one of them probably already does, by default).
 
-Super+Up to maximize the window vertically and Super+Right to maximize horizontally.
+Set `Super+Up` to maximize the window vertically and `Super+Right` to maximize horizontally.
 
-Test and make a note what are the shortcuts for "Move window" and "Resize window" (I left them at the defaults, which was alt+F7 and alt-F8). This will come in handy one day for sure when one of your windows acts up totally wonky.
+Test and make a note what are the shortcuts for "Move window" and "Resize window" (I left them at the defaults, which was `alt+F7` and `alt-F8`). This will come in handy one day for sure when one of your windows acts up totally wonky.
 
-Test Alt+mousedrag or Super+mousedrag (anywhere) on a window. One of the two should drag the window around, even if you grab it somewhere other than the title bar. If not, jump to the settings or search online and make it happen.
+Test `Alt+mousedrag` or `Super+mousedrag` (anywhere) on a window. One of the two should drag the window around, even if you grab it somewhere other than the title bar. If not, jump to the settings or search online and make it happen.
 
-Ctrl-L is a very useful shortcut that works in many different dialogs and applications. It focuses and places the cursor in the Address or Location Bar, so you can type an url or file path (often with autocomplete). It often works even if there is no Location Bar, instead a path made of "breadcrumb trail" buttons, press ctrl-L and it'll change to a proper text input Location bar. Works in most Open/Save dialogs, File Explorers, Browsers, etc. Occasionally if it's not ctrl-L, it might be F6 (which *toggles* focus between Address Bar and webpage in Firefox).
+`Ctrl-L` is a very useful shortcut that works in many different dialogs and applications. It focuses and places the cursor in the Address or Location Bar, so you can type an url or file path (often with autocomplete). It often works even if there is no Location Bar, instead a path made of "breadcrumb trail" buttons, press `ctrl-L` and it'll change to a proper text input Location bar. Works in most Open/Save dialogs, File Explorers, Browsers, etc. Occasionally if it's not `ctrl-L`, it might be F6 (which *toggles* focus between Address Bar and webpage in Firefox).
 
-I like to key Alt+Super+2/3/5/6/0 to the commands `redshift -O2300/3400/5200/6500` and `redshift -x` to quickly adjust the colour temperature of my screen.
+I like to key `Alt+Super+2`/`3`/`5`/`6`/`0` to the commands `redshift -O2300`/`-O3400`/`-O5200`/`-O6500` and `redshift -x` to quickly adjust the colour temperature of my screen.
 
-Set your **Compose key!** This is so much more useful than the "International Keyboard" option offered on other OSes. In MATE, go to System > Preferences > Keyboard > Layouts > Options... > Position of Compose key. Set it to "Pause". When was the last time you used Pause? Yeah. Now you can do Pause, c, = top produce €. Or Pause, e, " to produce ë. Many intuitive defaults are preconfigured and you can pretty much guess the combo to produce some character (multiple "obvious" combos are mapped to the same glyph). See [here](http://fsymbols.com/keyboard/linux/compose/) and [here](http://makandracards.com/makandra/1030-insert-an-ndash-and-other-special-characters-using-the-compose-key-on-linux) for more info or if you can't find the option on your DE of choice.
+Set your **Compose key!** This is so much more useful than the "International Keyboard" option offered on other OSes. In MATE, go to `System > Preferences > Keyboard > Layouts > Options... > Position of Compose key`. Set it to `Pause`. When was the last time you used `Pause`? Yeah. Now you can do `Pause`, `c`, `=` top produce `€`. Or `Pause`, `e`, `"` to produce `ë`. Many intuitive defaults are preconfigured and you can pretty much guess the combo to produce some character (multiple "obvious" combos are mapped to the same glyph). See [here](http://fsymbols.com/keyboard/linux/compose/) and [here](http://makandracards.com/makandra/1030-insert-an-ndash-and-other-special-characters-using-the-compose-key-on-linux) for more info or if you can't find the option on your DE of choice.
 
 ### zsh configuration
 
@@ -185,7 +185,7 @@ Also, see [Kyentei's repo](https://github.com/kyentei/configs) for zshrc, jackd 
 
 It is possible that too much scripting and autocomplete in your shell weighs heavy on a low-powered machine. Pay attention to delays in your terminal, in particular: Startup time, tab/autocomplete, typing in general, `echo "test"` and other commands that should run instantly. If you're not sure, `sudo chsh -s $(which bash) $USER` back to bash, try closing & opening a terminal, autocomplete stuff (try for both a folder with a small and large amount of files), typing some commands, try if it feels different or smoother.
 
-If that's the case, first try and compare zsh without the grml config (just `rm ~/.zshrc`). Then maybe try oh-my-zsh instead of grml (future updates of this manual may include more info about oh-my-zsh). If it turns out even clean zsh is too sluggish, there's [many other shells](http://hyperpolyglot.org/unix-shells) to try. Or bash is fine too. Remember that even in default bash, ctrl+R does incremental backwards search of your command history, a feature that can often make up for the lack of many others :)
+If that's the case, first try and compare zsh without the grml config (just `rm ~/.zshrc`). Then maybe try oh-my-zsh instead of grml (future updates of this manual may include more info about oh-my-zsh). If it turns out even clean zsh is too sluggish, there's [many other shells](http://hyperpolyglot.org/unix-shells) to try. Or bash is fine too. Remember that even in default bash, `ctrl+R` does incremental backwards search of your command history, a feature that can often make up for the lack of many others :)
 
 Processing
 -------------------------------------------------

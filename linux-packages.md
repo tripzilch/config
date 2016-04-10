@@ -1,14 +1,12 @@
 Linux config notities
-=====================
+=================================================
 
 Dit document bevat aantekeningen, spiekbriefjes en notities voor Linux op de desktop. Het is bedoeld voor Linux Mint, Ubuntu en andere distros die daar voldoende op lijken.
 
 Initieel bedoeld om een computer met frisse Linux install eenvoudig en snel te voorzien van nuttige software en configuratie, voor gebruik op [DJO](http://djog.nl). Bij [SCN](http://stichting-scn.nl/) gebruiken we een slimmere methode met een kant-en-klare image. Ondertussen bevat het ook algemenere aantekeningen en tips
 
-For DJO/SCN computers
----------------------
-
-### 1. Extra repository sources toevoegen
+1. Extra repository sources toevoegen
+-------------------------------------------------
 
 Dit is de makkelijkste manier om software te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of een binary ergens vandaan plukt).
 
@@ -16,34 +14,32 @@ Nadeel is wel weer dat je moet opletten of dit altijd nog wel nuttig is om te do
 
 En ook of deze specifieke extra repos nog steeds de meest recente versie trekken en compileren en niet gestopt zijn.
 
-Voor nieuwste ffmpeg:
+#### ffmpeg
 
     sudo add-apt-repository ppa:mc3man/trusty-media
 
-Voor nieuwste InkScape versie.
+#### inkscape
 
     sudo add-apt-repository ppa:inkscape.dev/stable
 
-Nieuwste Audacity versie (2.10b heeft oa betere noise redux, user interface, FX threading).
+#### audacity
 
     sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 
-Nieuwste Darktable versie
+2. Dan alles updaten
+-------------------------------------------------
 
-    sudo add-apt-repository ppa:pmjdebruijn/darktable-release
-
-### 2. Dan alles updaten
-
-Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook zorgt dit ervoor dat de index van bovenstaande extra repository sources worden ingeladen zodat de extra packages daarin beschikbaar komen.
+Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook haal je hiermee de indexes van bovenstaande extra repository sources binnen, zodat de extra packages daarin beschikbaar komen.
 
     sudo apt-get update && sudo apt-get dist-upgrade -y
 
-### 3. Packages en dingen installeren
+3. Packages en dingen installeren
+-------------------------------------------------
 
 Allerlei gaaf en nuttig spul:
 
     sudo apt-get install \
-        vlc audacious \
+        vlc mpv audacious \
         gimp inkscape audacity \
         firefox chromium-browser \
         owncloud-client keepassx \
@@ -59,39 +55,108 @@ Allerlei gaaf en nuttig spul:
 
     sudo pip install youtube-dl
 
+*Note:* youtube-dl is capable of much more than just downloading video from Youtube. For example SoundCloud, Vimeo, embedded videos, uitzendinggemist.nl, really almost anything. Just try it. In order to keep up with all these changing sites and different sources, it updates a few times a week. If you installed youtube-dl via pip, use this command to update to the most recent version:
 
-### Configure Browser
+    sudo -H pip install --upgrade youtube-dl
 
-(uBlock Origin adblocker](https://github.com/gorhill/uBlock/releases)
+4. Configure all the things
+-------------------------------------------------
 
-Zet de smooth scrolling uit in Firefox via about:config (zoek naar smoothscroll).
+### Firefox Browser
 
-### Package Control voor SublimeText
+Why I prefer Firefox over Chrome:
 
-https://packagecontrol.io/installation
+ * superior address bar ("awesome bar") searches bookmarks and history. Chrome only displays 5 results (and isn't very clever which ones to pick either)
+ * tags in bookmarks
+ * less hiding of privacy features
+ * Android: unlike Chrome, Firefox Android supports Add-ons. Firefox Sync helps syncing bookmarks and tabs between desktop and mobile. I consider Firefox Sync to be a relatively good deal, privacy-wise, if you're going to use a 3rd party sync solution: it is not linked to either Google+ or Facebook, but it's also not owned by a small-time startup (when US companies die, data assets will be sold off without the privacy policy, not even joking and still my sides hurt ...)
 
-Gebruik de "Simple" methode, code copypasten in de Sublime Console (ctrl-`).
+#### Add-ons
 
-Ga naar `Preferences > Settings - User` en voeg de volgende regel toe tussen de curly brackets:
+  * [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/). Adblocker.
+  * [Ghostery](https://addons.mozilla.org/en-US/firefox/addon/ghostery/). Block trackers, third party bloat, improve pageloading time, memory usage.
+  * [I don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/i-dont-care-about-cookies/). Deletes stupid EU cookie warnings.
+
+#### Bookmarklets
+
+Add these to the Bookmark Toolbar. Consider installing [Bookmark Shortcut Keys Add-on](https://addons.mozilla.org/en-US/firefox/addon/bookmark-shortcut-keys/) for extra ++useful.
+
+  * FIXEDFIXER -- kills `position:fixed` floaters
+
+    javascript:Array.forEach(document.getElementsByTagName('*'),%20function%20FIX(e){%20if%20(getComputedStyle(e).position%20==%20'fixed')%20e.style.position='static';})
+
+  * NEXT ➔ -- guesses most probable link to "next page", and clicks it (good ol' Opera ...)
+
+    javascript:['a[rel=next]','a.next','a[class*=next]','a[title*=next]','.next>a','[class*=next]>a'].find(function(v){var%20e=document.querySelector(v);if(e){e.click();return%201}else%20return%200});
+
+Of course don't forget to delete the useless bundled bookmarks. In fact, why not open bookmarks manager on first start, ctrl-A and delete all. Then import your bookmarks from previous browser.
+
+#### Other Firefox config
+
+Disable smooth scrolling. about:config, ctrl-f smoothscroll, false. Or via preferences, advanced, general, smooth scrolling. Even on a very fast machine, it still adds unnecessary jank and ghosted blurs on most monitors, so give it a try.
+
+Set DuckDuckGo as default search. Delete Amazon & such.
+
+Consider turning off search suggestions to improve privacy and unwanted suggestions. Firefox's address-bar search functionality (aka "awesome bar") is very powerful (esp. w.r.t. Chrome's) in searching your history and bookmarks, making 3rd party search suggestions unnecessary. For superior results, use DuckDuckGo's !bang syntax and learn the habit of bookmarking anything semi-useful (always adding a few keywords to the title, description or tags).
+
+Set homepage to about:blank
+
+Startup: tabs from last time
+
+Preferences, privacy, "Keep cookies until I close Firefox" (aka "throw away on exit"). Add exceptions for the three or four sites you'd like to stay logged on to (e.g. reddit, HN, github, grindr). ONLY log on to big social networks (Facebook, Google, etc) in a Private Window and learn to use KeePassX. Same goes for webmail, online banking, DigID, etc. Use KeePassX. If these sites have a password you can remember, it's either too simple or it has been the same for more than a year and you're doing it wrong.
+
+Remove useless GUI elements from toolbar: Home button, Search box, Pocket, etc. My toolbar looks like:
+
+    ADDRESS/AWESOME BAR - BOOKMARKS TOOLBAR - NoScript/Ghostery/uBlock BUTTONS - DOWNLOADS - HAMBURGER MENU BUTTON
+
+The address bar shows BACK/FORWARD and STOP/RELOAD buttons when applicable. Click and hold BACK/FORWARD buttons to show drop-down of browsing history for that tab.
+
+### SublimeText text/code editor
+
+Try ctrl+shift+P, "install package". If not work, install [Package Control](https://packagecontrol.io/installation). Then go get some packages, suggestions:
+
+  * AllAutocomplete. Autocompletes stuff from all open files instead of just the current one.
+  * ColorSchemeSelector. There are many colour schemes to choose from. But switching and trying out all of them to see which you like best is a bit of a hassle. This package makes that a bit quicker.
+  * [SideBarEnhancements](https://packagecontrol.io/packages/SideBarEnhancements). If you have folders/files in the sidebar, this adds some features to the right-click menu that you would expect to already be there (open with, new folder, rename, delete, etc).
+  * SyncedSidebarBg. For some reason the sidebar's background doesn't always adjust to your colour scheme. This fixes that. You might need to hide/unhide the sidebar for it to take effect.
+  * WordCount. Show wordcount, charcount, linecount in statusbar. Mystifies me how this is not a default Sublime feature.
+
+Tweak other settings. Ga naar `Preferences > Settings - User` en voeg de volgende regel(s) toe tussen de curly brackets:
 
     "scroll_speed": 0.0
 
 Vergeet niet te saven (ctrl-S).
 
-### QtCreator
+### Tweak Desktop Environment / Window Manager
 
-http://www.qt.io/download-open-source/
+Global **keyboard shortcuts!** In MATE, go to `System > Preferences > Keyboard Shortcuts`, but most DE will have this. Remember the "Windows-key" is called "Super" or sometimes "Mod4" on Linux. It's a great modifier for global keyboard shortcuts because not many applications use it. Here's some more ideas (but only bother if you'll actually use them).
 
-Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je moet de installer nog een executable flag geven (Properties menu, of `chmod +x ~/Downloads/qt-<TAB>` in command line). Je kan de stap om een account te maken gewoon overslaan (Next).
+Both Ctrl+Alt+T and Super+T should open a terminal in some way (at least one of them probably already does, by default).
 
-### Meld instellen als default git diff applicatie
-    git config --global diff.external meld
+Super+Up to maximize the window vertically and Super+Right to maximize horizontally.
 
-### zsh config
+Test and make a note what are the shortcuts for "Move window" and "Resize window" (I left them at the defaults, which was alt+F7 and alt-F8). This will come in handy one day for sure when one of your windows acts up totally wonky.
 
-#### DJO Easy Mode (TM)
+Test Alt+mousedrag or Super+mousedrag (anywhere) on a window. One of the two should drag the window around, even if you grab it somewhere other than the title bar. If not, jump to the settings or search online and make it happen.
+
+Ctrl-L is a very useful shortcut that works in many different dialogs and applications. It focuses and places the cursor in the Address or Location Bar, so you can type an url or file path (often with autocomplete). It often works even if there is no Location Bar, instead a path made of "breadcrumb trail" buttons, press ctrl-L and it'll change to a proper text input Location bar. Works in most Open/Save dialogs, File Explorers, Browsers, etc. Occasionally if it's not ctrl-L, it might be F6 (which *toggles* focus between Address Bar and webpage in Firefox).
+
+I like to key Alt+Super+2/3/5/6/0 to the commands `redshift -O2300/3400/5200/6500` and `redshift -x` to quickly adjust the colour temperature of my screen.
+
+Set your **Compose key!** This is so much more useful than the "International Keyboard" option offered on other OSes. In MATE, go to System > Preferences > Keyboard > Layouts > Options... > Position of Compose key. Set it to "Pause". When was the last time you used Pause? Yeah. Now you can do Pause, c, = top produce €. Or Pause, e, " to produce ë. Many intuitive defaults are preconfigured and you can pretty much guess the combo to produce some character (multiple "obvious" combos are mapped to the same glyph). See [here](http://fsymbols.com/keyboard/linux/compose/) and [here](http://makandracards.com/makandra/1030-insert-an-ndash-and-other-special-characters-using-the-compose-key-on-linux) for more info or if you can't find the option on your DE of choice.
+
+### zsh configuration
+
+If you don't use the terminal very often, get zsh anyway. At worst you'll never notice the difference.
+
+#### Easy Mode
+
+Change your default shell to zsh
 
     sudo chsh -s $(which zsh) $USER
+
+Grab grml's zsh config, which is feature-rich and has good defaults:
+
     cd
     wget -O .zshrc http://git.grml.org/f/grml-etc-core/etc/zsh/zshrc
 
@@ -116,16 +181,29 @@ Of, als de voorkeur uit gaat naar grmlr's zsh:
 
 Also, see [Kyentei's repo](https://github.com/kyentei/configs) for zshrc, jackd info, among other things.
 
-### just ipython+pylab special:
+#### shell performance
 
-    sudo apt-get install python-matplotlib python-numpy python-scipy python-pygame ipython ipython-notebook ipython-qtconsole python-pip
+It is possible that too much scripting and autocomplete in your shell weighs heavy on a low-powered machine. Pay attention to delays in your terminal, in particular: Startup time, tab/autocomplete, typing in general, `echo "test"` and other commands that should run instantly. If you're not sure, `sudo chsh -s $(which bash) $USER` back to bash, try closing & opening a terminal, autocomplete stuff (try for both a folder with a small and large amount of files), typing some commands, try if it feels different or smoother.
+
+If that's the case, first try and compare zsh without the grml config (just `rm ~/.zshrc`). Then maybe try oh-my-zsh instead of grml (future updates of this manual may include more info about oh-my-zsh). If it turns out even clean zsh is too sluggish, there's [many other shells](http://hyperpolyglot.org/unix-shells) to try. Or bash is fine too. Remember that even in default bash, ctrl+R does incremental backwards search of your command history, a feature that can often make up for the lack of many others :)
+
+Processing
+-------------------------------------------------
+
+[Download](https://processing.org/download/?processing) & install Processing
+
+[Configure SublimeText to use Processing](https://packagecontrol.io/packages/Processing)
+
+Other tools?
+
+Add [Processing Reference](https://processing.org/reference/) to bookmarks
 
 JACK
-----
+-------------------------------------------------
 
 Basis JACK + nuttige tools:
 
-    sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack
+    sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack jack-rack
 
 Het is handig om even te checken of QjackCtl automatisch opstart als je computer is opgestart (menu > `System` > `Preferences` > `Startup Applications`).
 
@@ -169,25 +247,34 @@ Hoe je dit optimaal moet fixen dat het gewoon werkt weet ik nog niet precies wan
 
   Als je voor deze laatste optie gaat, is het handig om even bij je Linux startmenu > `System` > `Preferences` > `Startup Applications` te kijken en QjackCtl uit te zetten (als die er tussen staat). Dan start QjackCtl niet op bij het opstarten en begin je gewoon met ALSA+PulseAudio zonder JACK, en kan je zelf JACK aanzetten wanneer je wilt (QjackCtl staat in het startmenu bij `Sound & Video`).
 
+THE REST
+=================================================
+
+From here follows ran dom snip pets that I'm not 100% sure are up to date or correct.
 
 Various optional packages
--------------------------
+-------------------------------------------------
+
+Blender is not only for 3D-modeling, but also has powerful video editing tools.
 
     sudo apt-get install blender
 
-    sudo apt-get install powertop gtk-redshift
+Powertop is a terminal-based tool like htop (CPU usage / processes), but instead shows (and allows to tweak) battery usage. Useful for laptops with working batteries.
 
-    sudo apt-get install dropbox powertop redshift
+    sudo apt-get install powertop
 
-    sudo pip install youtube-dl
+Dropbox is dropbox. Useful for storing keepass.kdb
 
-    sudo apt-get install jackd qjackctl patchage vlc-plugin-jack pulseaudio-module-jack --install-suggests
+    sudo apt-get install dropbox
+
+Yay for `ipython qtconsole --pylab`!
+
+    sudo apt-get install python-matplotlib python-numpy python-scipy python-pygame ipython ipython-notebook ipython-qtconsole python-pip
 
 Dropbox
-=======
+-------------------------------------------------
 
-Per user
---------
+#### Per user
 
     cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
 
@@ -195,8 +282,7 @@ then run manually to create connect and ~/Dropbox dir etc:
 
     ~/.dropbox-dist/dropbox
 
-Init.d
-------
+#### Init.d
 
 Get script from https://gist.github.com/861875 and place into /etc/init.d/dropbox, then (sudo):
 
@@ -208,7 +294,7 @@ Get script from https://gist.github.com/861875 and place into /etc/init.d/dropbo
 Then reboot etc.
 
 Owncloud
-========
+-------------------------------------------------
 
 First, add and sign the repositories:
 
@@ -311,3 +397,13 @@ Dan kan je daarna als root "mysql" intypen en ben je root user in de db
      dns-search scn.lan
 
 en daarna even `sudo service network-manager restart` of gewoon `sudo reboot`.
+
+### QtCreator
+
+http://www.qt.io/download-open-source/
+
+Gebruik de Qt online installer, dan krijg je ook de docs en nuttige examples. Je moet de installer nog een executable flag geven (Properties menu, of `chmod +x ~/Downloads/qt-<TAB>` in command line). Je kan de stap om een account te maken gewoon overslaan (Next).
+
+### Meld instellen als default git diff applicatie
+    git config --global diff.external meld
+

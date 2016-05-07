@@ -5,3 +5,7 @@
 * uBlock Origin, Ghostery
 * sublime `"scroll_speed": 0.0,`
 * [Processing sublime plugin](https://packagecontrol.io/packages/Processing) PATH gebeuren goed zetten
+
+* terminator of dat andere ding als de default taermknailator
+
+* GIMP niet in single window n0bmode 

@@ -81,11 +81,11 @@ Why I prefer Firefox over Chrome:
 
 Add these to the Bookmark Toolbar. Consider installing [Bookmark Shortcut Keys Add-on](https://addons.mozilla.org/en-US/firefox/addon/bookmark-shortcut-keys/) for extra ++useful.
 
-  * FIXEDFIXER -- kills `position:fixed` floaters
+  * `FIXEDFIXER` -- kills `position:fixed` floaters
 
         javascript:Array.forEach(document.getElementsByTagName('*'),%20function%20FIX(e){%20if%20(getComputedStyle(e).position%20==%20'fixed')%20e.style.position='static';})
 
-  * NEXT ➔ -- guesses most probable link to "next page", and clicks it (good ol' Opera ...)
+  * `NEXT ➔` -- guesses most probable link to "next page", and clicks it (good ol' Opera ...)
 
         javascript:['a[rel=next]','a.next','a[class*=next]','a[title*=next]','.next>a','[class*=next]>a'].find(function(v){var%20e=document.querySelector(v);if(e){e.click();return%201}else%20return%200});
 

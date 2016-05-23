@@ -74,14 +74,14 @@ Best way to get these running? Apt, pip or anaconda?
     * create an alias for processing-java in /bin/ instead of /usr/bin/, e.g.: `sudo ln -s /opt/processing/processing-java /bin/processing-java`
     * test code, save as `Test/Test.pde` (needs to be in folder), `ctrl-B` to build
 
-        void setup() {
-            size(200,200);
-            background(0);
-            noStroke();
-        }
+            void setup() {
+                size(200,200);
+                background(0);
+                noStroke();
+            }
 
-        void draw() {
-            fill((-frameCount%2)&255);
-            rect(random(175),random(175),25,25);
-        }
+            void draw() {
+                fill((-frameCount%2)&255);
+                rect(random(175),random(175),25,25);
+            }
 

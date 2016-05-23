@@ -71,7 +71,9 @@ Best way to get these running? Apt, pip or anaconda?
 - config [Processing sublime plugin](https://packagecontrol.io/packages/Processing) (zie webpage onder kopje "Linux")
 
     * set PATH to where your processing application is located, e.g.: `export PATH=$PATH:/opt/processing/processing-2.0b4` in .profile
+
     * create an alias for processing-java in /bin/ instead of /usr/bin/, e.g.: `sudo ln -s /opt/processing/processing-java /bin/processing-java`
+
     * test code, save as `Test/Test.pde` (needs to be in folder), `ctrl-B` to build
 
             void setup() {

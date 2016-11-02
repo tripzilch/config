@@ -74,6 +74,7 @@ Why I prefer Firefox over Chrome:
 #### Add-ons
 
   * [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/). Adblocker.
+  * [uBlock Origin WebSocket (Only if using Chromium based browsers, in combination with uBlock Origin, [full explanation](http://pastebin.com/raw/XmgMcPBi))](https://github.com/gorhill/uBO-WebSocket)
   * [Ghostery](https://addons.mozilla.org/en-US/firefox/addon/ghostery/). Block trackers, third party bloat, improve pageloading time, memory usage.
   * [I don't care about cookies](https://addons.mozilla.org/en-US/firefox/addon/i-dont-care-about-cookies/). Deletes stupid EU cookie warnings.
 

@@ -5,15 +5,13 @@ Dit document bevat aantekeningen, spiekbriefjes en notities voor Linux op de des
 
 Initieel bedoeld om een computer met frisse Linux install eenvoudig en snel te voorzien van nuttige software en configuratie, voor gebruik op [DJO](http://djog.nl). Bij [SCN](http://stichting-scn.nl/) gebruiken we een slimmere methode met een kant-en-klare image. Ondertussen bevat het ook algemenere aantekeningen en tips
 
-1. Alles updaten
--------------------------------------------------
+## 1. Alles updaten
 
 Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer.
 
     sudo apt-get update && sudo apt-get upgrade -y
 
-2. Packages en dingen installeren
--------------------------------------------------
+## 2. Packages en dingen installeren
 
 Allerlei gaaf en nuttig spul:
 
@@ -43,8 +41,7 @@ And while you're at it, it's probably a good idea to upgrade pip itself and any 
     
     sudo -H pip3 install --upgrade pip youtube-dl beets
     
-3. Extra repository sources toevoegen
--------------------------------------------------
+## 3. Extra repository sources toevoegen
 
 Dit is de makkelijkste manier om software te kunnen installeren die niet (of verouderd) in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of een binary ergens vandaan plukt).
 
@@ -62,8 +59,7 @@ Waarbij `<ppa:repository>` bijvoorbeeld kan zijn:
 
 Nogmaals je moet even checken in hoeverre deze nog werken, handig zijn, en of je dit wilt. TODO: link to the relevant ppa pages. 
 
-4. Configure all the things
--------------------------------------------------
+## 4. Configure all the things
 
 ### Firefox Browser
 
@@ -205,8 +201,7 @@ It is possible that too much scripting and autocomplete in your shell weighs hea
 
 If that's the case, first try and compare zsh without the grml config (just `rm ~/.zshrc`). Then maybe try oh-my-zsh instead of grml (future updates of this manual may include more info about oh-my-zsh). If it turns out even clean zsh is too sluggish, there's [many other shells](http://hyperpolyglot.org/unix-shells) to try. Or bash is fine too. Remember that even in default bash, `ctrl+R` does incremental backwards search of your command history, a feature that can often make up for the lack of many others :)
 
-Processing
--------------------------------------------------
+## Processing
 
 [Download](https://processing.org/download/?processing) & install Processing
 
@@ -216,8 +211,7 @@ Other tools?
 
 Add [Processing Reference](https://processing.org/reference/) to bookmarks
 
-JACK
--------------------------------------------------
+## JACK
 
 Basis JACK + nuttige tools:
 
@@ -265,8 +259,7 @@ Hoe je dit optimaal moet fixen dat het gewoon werkt weet ik nog niet precies wan
 
   Als je voor deze laatste optie gaat, is het handig om even bij je Linux startmenu > `System` > `Preferences` > `Startup Applications` te kijken en QjackCtl uit te zetten (als die er tussen staat). Dan start QjackCtl niet op bij het opstarten en begin je gewoon met ALSA+PulseAudio zonder JACK, en kan je zelf JACK aanzetten wanneer je wilt (QjackCtl staat in het startmenu bij `Sound & Video`).
 
-THE REST
-=================================================
+# THE REST
 
 From here follows ran dom snip pets that I'm not 100% sure are up to date or correct.
 

@@ -5,35 +5,14 @@ Dit document bevat aantekeningen, spiekbriefjes en notities voor Linux op de des
 
 Initieel bedoeld om een computer met frisse Linux install eenvoudig en snel te voorzien van nuttige software en configuratie, voor gebruik op [DJO](http://djog.nl). Bij [SCN](http://stichting-scn.nl/) gebruiken we een slimmere methode met een kant-en-klare image. Ondertussen bevat het ook algemenere aantekeningen en tips
 
-1. Extra repository sources toevoegen
+1. Alles updaten
 -------------------------------------------------
 
-Dit is de makkelijkste manier om software te kunnen installeren die niet in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of een binary ergens vandaan plukt).
+Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer.
 
-Nadeel is wel weer dat je moet opletten of dit altijd nog wel nuttig is om te doen (heen-en-weer-getrek tussen ffmpeg en avconv is ook iedere maand anders).
+    sudo apt-get update && sudo apt-get upgrade -y
 
-En ook of deze specifieke extra repos nog steeds de meest recente versie trekken en compileren en niet gestopt zijn.
-
-#### ffmpeg
-
-    sudo add-apt-repository ppa:mc3man/trusty-media
-
-#### inkscape
-
-    sudo add-apt-repository ppa:inkscape.dev/stable
-
-#### audacity
-
-    sudo add-apt-repository ppa:ubuntuhandbook1/audacity
-
-2. Dan alles updaten
--------------------------------------------------
-
-Dit is belangrijk om de nieuwste versie (en security-updates) te krijgen, die misschien niet meegenomen zijn in de Linux installer. Ook haal je hiermee de indexes van bovenstaande extra repository sources binnen, zodat de extra packages daarin beschikbaar komen.
-
-    sudo apt-get update && sudo apt-get dist-upgrade -y
-
-3. Packages en dingen installeren
+2. Packages en dingen installeren
 -------------------------------------------------
 
 Allerlei gaaf en nuttig spul:
@@ -42,22 +21,46 @@ Allerlei gaaf en nuttig spul:
         vlc mpv audacious \
         gimp inkscape audacity \
         firefox chromium-browser \
-        owncloud-client keepassx \
+        keepassx \
         p7zip-full p7zip-rar ttf-mscorefonts-installer \
-        ffmpeg imagemagick pandoc swftools \
-        python-pip python-matplotlib python-numpy python-scipy python-pygame \
-        ipython ipython-notebook ipython-qtconsole \
+        ffmpeg imagemagick pandoc \
+        python3-pip \        
         vim sublime-text \
         gcc g++ build-essential \
         zsh terminator \
-        git git-core meld \
+        git \
         espeak curl aria2 htop xclip cowsay
 
-    sudo pip install youtube-dl
+    sudo -H pip3 install --upgrade youtube-dl jupyter pyqt5 requests     
 
-*Note:* youtube-dl is capable of much more than just downloading video from Youtube. For example SoundCloud, Vimeo, embedded videos, uitzendinggemist.nl, really almost anything. Just try it. In order to keep up with all these changing sites and different sources, it updates a few times a week. If you installed youtube-dl via pip, use this command to update to the most recent version:
+*Note:* We're using pip3 because Python 3 has been the future for ages now. Also it might help with weird conflicts between PyQt versions in your system's python version (which is probably still ducttaped together with Python 2.7.x).
 
-    sudo -H pip install --upgrade youtube-dl
+*Note:* youtube-dl is capable of much more than just downloading video from Youtube. For example SoundCloud, Vimeo, embedded videos, uitzendinggemist.nl, really almost anything. Just try it. In order to keep up with all these changing sites and different sources, it updates a few times a week. If you installed youtube-dl via pip3 (recommended because the version in the debian repos is updated hardly ever), use this command to update to the most recent version:
+
+    sudo -H pip3 install --upgrade youtube-dl
+    
+And while you're at it, it's probably a good idea to upgrade pip itself and any other python packages that you like to be up-to-date.
+    
+    sudo -H pip3 install --upgrade pip youtube-dl beets
+    
+3. Extra repository sources toevoegen
+-------------------------------------------------
+
+Dit is de makkelijkste manier om software te kunnen installeren die niet (of verouderd) in de default repositories staat. Voordeel is dat updates ook automatisch worden meegenomen (dit gebeurt niet als je zelf een .deb downloadt, van source compileert, of een binary ergens vandaan plukt).
+
+Nadeel is wel weer dat je moet opletten of dit altijd nog wel nuttig is om te doen (heen-en-weer-getrek tussen ffmpeg en avconv is ook iedere maand anders). Check ook of deze specifieke extra repos nog steeds de meest recente versie trekken en compileren en niet gestopt zijn.
+
+De command line is als volgt:
+
+    sudo add-apt-repository <ppa:repository>
+    
+Waarbij `<ppa:repository>` bijvoorbeeld kan zijn:
+
+* **ffmpeg** `ppa:mc3man/trusty-media`
+* **inkscape** `ppa:inkscape.dev/stable`
+* **audacity** `ppa:ubuntuhandbook1/audacity`
+
+Nogmaals je moet even checken in hoeverre deze nog werken, handig zijn, en of je dit wilt. TODO: link to the relevant ppa pages. 
 
 4. Configure all the things
 -------------------------------------------------
@@ -93,17 +96,32 @@ Of course don't forget to delete the useless bundled bookmarks. In fact, why not
 
 #### Other Firefox config
 
-Disable smooth scrolling. `ctrl-L`, `about:config`, search "smoothscroll", set to `false`. Or via preferences, advanced, general, smooth scrolling. Even on a very fast machine, it still adds unnecessary jank and ghosted blurs on most monitors, so give it a try.
+**Disable smooth scrolling.** `ctrl-L`, `about:config`, search "smoothscroll", set to `false`. Or via preferences, advanced, general, smooth scrolling. Even on a very fast machine, it still adds unnecessary jank and ghosted blurs on most monitors, so give it a try.
 
-Set DuckDuckGo as default search. Delete Amazon & such.
+Set **DuckDuckGo as default search**. Delete Amazon & such.
 
-Consider turning off search suggestions to improve privacy and unwanted suggestions. Firefox's address-bar search functionality (aka "awesome bar") is very powerful (esp. w.r.t. Chrome's) in searching your history and bookmarks, making 3rd party search suggestions unnecessary. For superior results, use DuckDuckGo's !bang syntax and learn the habit of bookmarking anything semi-useful (always adding a few keywords to the title, description or tags).
+Consider turning off search suggestions to improve privacy and unwanted suggestions. 
 
-Set homepage to about:blank
+Firefox's address-bar search functionality (aka **Awesome Bar**) is very powerful (esp. w.r.t. Chrome's) in searching your history and bookmarks, making 3rd party search suggestions nearly unnecessary. For superior results, use DuckDuckGo's !bang syntax and learn the habit of bookmarking anything semi-useful (always adding a few keywords to the title, description or tags). Special awesome bar commands from this [Mozilla support article](https://support.mozilla.org/en-US/kb/awesome-bar-search-firefox-bookmarks-history-tabs?redirectlocale=en-US&redirectslug=awesome-bar-find-your-bookmarks-history-and-tabs#w_changing-results-on-the-fly):
 
-Startup: tabs from last time
+* Add ^ to search for matches in your browsing history.
+* Add * to search for matches in your bookmarks.
+* Add + to search for matches in pages you've tagged.
+* Add % to search for matches in your currently open tabs.
+* Add ~ to search for matches in pages you've typed.
+* Add # to search for matches in page titles.
+* Add @ to search for matches in web addresses (URLs).
+* Add $ to search for matches in suggestions. 
 
-Preferences, privacy, "Keep cookies until I close Firefox" (aka "throw away on exit"). Add exceptions for the three or four sites you'd like to stay logged on to (e.g. reddit, HN, github, grindr). ONLY log on to big social networks (Facebook, Google, etc) in a Private Window and learn to use KeePassX. Same goes for webmail, online banking, DigID, etc. Use KeePassX. If these sites have a password you can remember, it's either too simple or it has been the same for more than a year and you're doing it wrong.
+**Set homepage** to about:blank
+
+**Startup to tabs from last time**
+
+Preferences, privacy, **"Keep cookies until I close Firefox"** (aka "throw away on exit"). You can **add exceptions** for the few sites you'd like to stay logged on to (e.g. reddit, hackernews, github, etc) by right-clicking in that page, select *Page Info*, and change the setting in the *Privacy* tab. 
+
+**ONLY log on to Facebook, Google and other big social networks in a Private Window** and **learn to use KeePassX**. 
+
+Same goes for webmail, online banking, DigID, etc. **Use KeePassX**. If these sites have a password you can remember, it's either too simple or it has been the same for more than a year and *you're doing it wrong*.
 
 Remove useless GUI elements from toolbar: Home button, Search box, Pocket, etc. My toolbar looks like:
 
